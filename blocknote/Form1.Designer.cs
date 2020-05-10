@@ -65,26 +65,30 @@
             // новийДокументToolStripMenuItem
             // 
             this.новийДокументToolStripMenuItem.Name = "новийДокументToolStripMenuItem";
-            this.новийДокументToolStripMenuItem.Size = new System.Drawing.Size(207, 26);
+            this.новийДокументToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.новийДокументToolStripMenuItem.Text = "Новий документ";
+            this.новийДокументToolStripMenuItem.Click += new System.EventHandler(this.CreateNewDocument);
             // 
             // відкритиToolStripMenuItem
             // 
             this.відкритиToolStripMenuItem.Name = "відкритиToolStripMenuItem";
-            this.відкритиToolStripMenuItem.Size = new System.Drawing.Size(207, 26);
+            this.відкритиToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.відкритиToolStripMenuItem.Text = "Відкрити";
+            this.відкритиToolStripMenuItem.Click += new System.EventHandler(this.OpenFile);
             // 
             // зберегтиToolStripMenuItem
             // 
             this.зберегтиToolStripMenuItem.Name = "зберегтиToolStripMenuItem";
-            this.зберегтиToolStripMenuItem.Size = new System.Drawing.Size(207, 26);
+            this.зберегтиToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.зберегтиToolStripMenuItem.Text = "Зберегти";
+            this.зберегтиToolStripMenuItem.Click += new System.EventHandler(this.Save);
             // 
             // зберегтиЯкToolStripMenuItem
             // 
             this.зберегтиЯкToolStripMenuItem.Name = "зберегтиЯкToolStripMenuItem";
-            this.зберегтиЯкToolStripMenuItem.Size = new System.Drawing.Size(207, 26);
+            this.зберегтиЯкToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.зберегтиЯкToolStripMenuItem.Text = "Зберегти як";
+            this.зберегтиЯкToolStripMenuItem.Click += new System.EventHandler(this.SaveAs);
             // 
             // textBox1
             // 
@@ -94,6 +98,7 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(833, 687);
             this.textBox1.TabIndex = 1;
+            this.textBox1.TextChanged += new System.EventHandler(this.OnTextChanget);
             // 
             // openFileDialog1
             // 
