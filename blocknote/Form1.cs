@@ -27,8 +27,10 @@ namespace blocknote
 
         public void CreateNewDocument(object sender, EventArgs e)
         {
+            SaveUnsavedFile();
             textBox1.Text = "";
             filename = "";
+            isFileChanged = false;
 
             UpdateTextWithTitle();
         }
@@ -36,6 +38,7 @@ namespace blocknote
         public void OpenFile(object sender, EventArgs e)
         {
             openFileDialog1.FileName = "";
+            SaveUnsavedFile();
 
             if(openFileDialog1.ShowDialog() == DialogResult.OK)
             {
@@ -68,7 +71,7 @@ namespace blocknote
 
             try
             {
-                StreamWriter sw = new StreamWriter(_filename);
+                StreamWriter sw = new StreamWriter(_filename + ".txt");
                 sw.Write(textBox1.Text);
                 sw.Close(); 
                 filename = _filename;
@@ -78,6 +81,8 @@ namespace blocknote
             {
                 MessageBox.Show("Не вдалось зберегти даний файл");
             }
+
+            UpdateTextWithTitle();
         }
 
         public void Save(object sender, EventArgs e)
@@ -110,6 +115,55 @@ namespace blocknote
             {
                 this.Text = "Пустий проект - Notepad";
             }
+        }
+
+        public void SaveUnsavedFile()
+        {
+            if (isFileChanged)
+            {
+                DialogResult result = MessageBox.Show("Зберегти зміни перед закриттям?", "Збереження файлу", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
+
+                if(result == DialogResult.Yes)
+                {
+                    SaveFile(filename);
+                }
+            }
+        }
+
+        public void CopyText()
+        {
+            Clipboard.SetText(textBox1.SelectedText);
+        }
+
+        public void CutText()
+        {
+            Clipboard.SetText(textBox1.SelectedText);
+            textBox1.Text = textBox1.Text.Remove(textBox1.SelectionStart, textBox1.SelectionLength);
+        }
+
+        public void PasteText()
+        {
+            textBox1.Text = textBox1.Text.Substring(0, textBox1.SelectionStart) + Clipboard.GetText() + textBox1.Text.Substring(textBox1.SelectionStart, textBox1.Text.Length - textBox1.SelectionStart);
+        }
+
+        private void OnCopyClick(object sender, EventArgs e)
+        {
+            CopyText();
+        }
+
+        private void OnPasteClick(object sender, EventArgs e)
+        {
+            PasteText();
+        }
+
+        private void OnCutClick(object sender, EventArgs e)
+        {
+            CutText();
+        }
+
+        private void OnFormClosing(object sender, FormClosingEventArgs e)
+        {
+            SaveUnsavedFile();
         }
     }
 }
