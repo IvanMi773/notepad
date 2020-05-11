@@ -55,7 +55,7 @@
             this.форматToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(833, 30);
+            this.menuStrip1.Size = new System.Drawing.Size(833, 28);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -132,10 +132,10 @@
             // textBox1
             // 
             this.textBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBox1.Location = new System.Drawing.Point(0, 30);
+            this.textBox1.Location = new System.Drawing.Point(0, 28);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(833, 685);
+            this.textBox1.Size = new System.Drawing.Size(833, 687);
             this.textBox1.TabIndex = 1;
             this.textBox1.TextChanged += new System.EventHandler(this.OnTextChanget);
             // 
@@ -156,6 +156,7 @@
             this.шрифтToolStripMenuItem.Name = "шрифтToolStripMenuItem";
             this.шрифтToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.шрифтToolStripMenuItem.Text = "Шрифт";
+            this.шрифтToolStripMenuItem.Click += new System.EventHandler(this.OnFontClick);
             // 
             // Form1
             // 
@@ -167,6 +168,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
             this.Text = "Notepad";
+            this.Activated += new System.EventHandler(this.OnFocus);
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.OnFormClosing);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
